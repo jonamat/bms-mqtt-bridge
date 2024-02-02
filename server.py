@@ -15,8 +15,14 @@ SYSTEM_NAME = os.getenv("SYSTEM_NAME", "Makai")
 global_client = None
 last_status = "ALIVE"
 
-driver = DalyBMS()
-driver.connect(device=DEVICE_ADDR)
+while True:
+    try:
+        driver = DalyBMS()
+        driver.connect(device=DEVICE_ADDR)
+        break
+    except Exception as e:
+        print(e)
+        time.sleep(5)
 
 
 # def on_connect(client, userdata, flags, rc):
@@ -34,7 +40,12 @@ def mqtt_loop():
     # client.on_connect = on_connect
     # client.on_message = on_message
 
-    client.connect(os.getenv("BROKER"), 1883, 60)
+    while True:
+        try:
+            client.connect(os.getenv("BROKER"), 1883, 60)
+            break
+        except:
+            time.sleep(5)
 
     global_client = client
 
