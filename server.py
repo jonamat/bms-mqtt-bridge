@@ -1,11 +1,9 @@
 from dalybms import DalyBMS
 import paho.mqtt.client as mqtt
-from dotenv import load_dotenv
 import threading
 import os
 import time
 
-load_dotenv()
 DELAY_SEC = os.getenv("DELAY_SEC", 5)
 BROKER = os.getenv("BROKER", "localhost")
 DEVICE_ADDR = os.getenv("DEVICE_ADDR", "/dev/ttyUSB0")
@@ -49,7 +47,7 @@ heartbeat_loop.start()
 
 def read_and_publish():
     global last_status
-    
+
     try:
         soc = driver.get_soc()
         temps = driver.get_temperatures()

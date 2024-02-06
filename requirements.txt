@@ -1,4 +1,3 @@
 dalybms==0.3.0
 pyserial==3.5
-python-dotenv==0.21.0
 paho-mqtt==1.6.1
