@@ -24,6 +24,7 @@ def mqtt_loop():
             client.connect(os.getenv("BROKER"), 1883, 60)
             break
         except:
+            print("Error connecting to broker, retrying...")
             time.sleep(5)
 
     global_client = client
