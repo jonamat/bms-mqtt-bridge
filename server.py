@@ -83,5 +83,5 @@ while True:
             time.sleep(DELAY_SEC)
 
     except Exception as e:
-        print(e)
+        print("Error during connect", e)
         time.sleep(5)
