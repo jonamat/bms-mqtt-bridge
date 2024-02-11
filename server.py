@@ -72,6 +72,7 @@ def read_and_publish():
     except Exception as e:
         print("Error during read", e)
         last_status = "ERROR"
+        return True
 
 
 while True:
@@ -80,7 +81,9 @@ while True:
         driver.connect(device=DEVICE_ADDR)
 
         while True:
-            read_and_publish()
+            err = read_and_publish()
+            if err:
+                break
             time.sleep(DELAY_SEC)
 
     except Exception as e:
